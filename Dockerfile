@@ -13,8 +13,9 @@ RUN apt-get update && apt-get install -y \
 # Konfigurasi Apache agar mengikuti variabel $PORT dari Railway
 RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 
-# Aktifkan mod_rewrite Apache dan pastikan MPM yang benar
-RUN a2dismod mpm_event && a2enmod mpm_prefork && a2enmod rewrite
+# Aktifkan mod_rewrite Apache dan pastikan HANYA mpm_prefork yang dimuat (hapus mpm_event agar tidak bentrok)
+RUN rm -f /etc/apache2/mods-enabled/mpm_event.load /etc/apache2/mods-enabled/mpm_event.conf && \
+    a2enmod mpm_prefork && a2enmod rewrite
 
 # Salin semua file proyek
 COPY . /var/www/html/
