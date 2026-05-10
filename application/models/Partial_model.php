@@ -57,7 +57,7 @@ class Partial_model extends CI_Model
 
     public function get_reminder_dates()
     {
-        $this->db->select('id_parsial, tgl_kirim_pom, tgl_kembali_pom, DATE_ADD(tgl_kirim_pom, INTERVAL 10 DAY) as reminder_date');
+        $this->db->select("id_parsial, tgl_kirim_pom, tgl_kembali_pom, date(tgl_kirim_pom, '+10 days') as reminder_date");
         $this->db->from('user_parsial');
 
         $query = $this->db->get();

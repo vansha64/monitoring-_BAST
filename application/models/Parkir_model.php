@@ -71,8 +71,9 @@ class Parkir_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('user_parkir');
-        $this->db->where('DATEDIFF(tgl_berakhir, CURDATE()) <= 7');
-        $this->db->where('DATEDIFF(tgl_berakhir, CURDATE()) >= 0');
+        // SQLite compatible date comparison
+        $this->db->where("tgl_berakhir <= date('now', 'localtime', '+7 days')");
+        $this->db->where("tgl_berakhir >= date('now', 'localtime')");
         $query = $this->db->get();
         return $query->result_array();
     }
