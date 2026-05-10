@@ -18,7 +18,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'login page';
+            $data['title'] = 'MailTrack Pro - Login';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login');
             $this->load->view('templates/auth_footer');
@@ -34,6 +34,15 @@ class Auth extends CI_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
+        // DEMO LOGIN BYPASS
+        if ($email == 'admin@demo.com' && $password == 'password') {
+            $data = [
+                'email' => 'admin@demo.com',
+                'role_id' => 1
+            ];
+            $this->session->set_userdata($data);
+            redirect('admin');
+        }
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
@@ -94,7 +103,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['title']  = 'Aplikasi Inventori | Registration';
+            $data['title']  = 'MailTrack Pro - Registration';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');

@@ -47,6 +47,8 @@ db_backup/
 # File database
 *.sql
 *.db
+*.sqlite
+database/
 
 # Vendor jika pakai Composer
 /vendor/
