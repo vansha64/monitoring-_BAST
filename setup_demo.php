@@ -162,8 +162,8 @@ try {
         ('PT. Global Solusindo', 'Budi Santoso', 'B 1234 ABC', 'Mobil', 'Aktif'),
         ('PT. Maju Bersama', 'Siti Aminah', 'D 5678 XYZ', 'Motor', 'Aktif')");
 
-    echo "Demo database initialized successfully.\n";
+    // echo "Demo database initialized successfully.\n";
 
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage() . "\n";
+    // echo "Error: " . $e->getMessage() . "\n";
 }
