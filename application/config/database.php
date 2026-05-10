@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'sqlite:' . FCPATH . 'application/database/demo.sqlite',
+	'dsn'	=> 'sqlite:/tmp/demo.sqlite',
 	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',

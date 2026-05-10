@@ -1,8 +1,5 @@
 <?php
-$db_file = __DIR__ . '/application/database/demo.sqlite';
-if (!is_dir(__DIR__ . '/application/database')) {
-    mkdir(__DIR__ . '/application/database', 0777, true);
-}
+$db_file = '/tmp/demo.sqlite';
 
 try {
     $db = new PDO('sqlite:' . $db_file);
