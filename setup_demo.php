@@ -1,7 +1,7 @@
 <?php
-$db_file = 'application/database/demo.sqlite';
-if (!is_dir('application/database')) {
-    mkdir('application/database', 0777, true);
+$db_file = __DIR__ . '/application/database/demo.sqlite';
+if (!is_dir(__DIR__ . '/application/database')) {
+    mkdir(__DIR__ . '/application/database', 0777, true);
 }
 
 try {
