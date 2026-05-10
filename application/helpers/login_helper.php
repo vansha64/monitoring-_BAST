@@ -12,7 +12,14 @@ function is_logged_in()
         $role_id = $ci->session->userdata('role_id');
         $menu = $ci->uri->segment(1);
 
-        $queryMenu = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
+        // Menggunakan LOWER() agar case-insensitive (penting untuk SQLite)
+        $ci->db->where('LOWER(menu)', strtolower($menu));
+        $queryMenu = $ci->db->get('user_menu')->row_array();
+
+        // Mencegah error di PHP 8 jika menu tidak ditemukan
+        if (!$queryMenu) {
+            redirect('auth/blocked');
+        }
 
         $menu_id = $queryMenu['id'];
         $userAccess = $ci->db->get_where('user_access_menu', ['role_id' => $role_id, 'menu_id' => $menu_id]);
