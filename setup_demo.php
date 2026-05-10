@@ -122,6 +122,36 @@ try {
             timestamp INTEGER DEFAULT 0 NOT NULL,
             data blob NOT NULL,
             PRIMARY KEY (id)
+        )",
+        "CREATE TABLE IF NOT EXISTS user_bast2 (
+            id_bast2 INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_bast INTEGER,
+            no_kontrak TEXT,
+            tgl_pom TEXT,
+            kembali_pom TEXT,
+            tgl_terima_bast2 TEXT,
+            tgl_pusat2 TEXT,
+            tgl_kontraktor2 TEXT,
+            file_pdf_bast2 TEXT,
+            keterangan2 TEXT,
+            is_revisi INTEGER,
+            created_by TEXT,
+            updated_by TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_asbuilt_drawing (
+            id_asbuilt INTEGER PRIMARY KEY AUTOINCREMENT,
+            no_kontrak TEXT,
+            tgl_terima TEXT,
+            status TEXT,
+            keterangan TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_final_account_milenial (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            no_kontrak TEXT,
+            nama_pt TEXT,
+            pekerjaan TEXT,
+            created_by TEXT,
+            updated_by TEXT
         )"
     ];
 
