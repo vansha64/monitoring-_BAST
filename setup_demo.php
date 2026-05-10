@@ -112,9 +112,17 @@ try {
             status TEXT
         )",
         "CREATE TABLE IF NOT EXISTS user_parsial (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nama TEXT,
-            keterangan TEXT
+            id_parsial INTEGER PRIMARY KEY AUTOINCREMENT,
+            lokasi TEXT,
+            area TEXT,
+            pekerjaan TEXT,
+            nama_kontraktor TEXT,
+            no_dokumen TEXT,
+            tgl_kirim_pom TEXT,
+            tgl_kembali_pom TEXT,
+            tgl_kembali_kontraktor TEXT,
+            keterangan TEXT,
+            scan_pdf TEXT
         )",
         "CREATE TABLE IF NOT EXISTS ci_sessions (
             id varchar(128) NOT NULL,
