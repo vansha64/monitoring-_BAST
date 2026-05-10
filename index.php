@@ -307,13 +307,21 @@ switch (ENVIRONMENT)
 
 /*
  * --------------------------------------------------------------------
- * AUTO-FIX: Create & Seed SQLite Database if missing or empty
+ * AUTO-FIX: Force Create SQLite Session Table
  * --------------------------------------------------------------------
  */
 $db_file = dirname(__FILE__) . '/application/database/demo.sqlite';
-if (!file_exists($db_file) || filesize($db_file) === 0) {
-    require_once dirname(__FILE__) . '/setup_demo.php';
-}
+try {
+    $db = new PDO('sqlite:' . $db_file);
+    $db->exec("CREATE TABLE IF NOT EXISTS ci_sessions (
+        id varchar(128) NOT NULL,
+        ip_address varchar(45) NOT NULL,
+        timestamp int(10) unsigned DEFAULT 0 NOT NULL,
+        data blob NOT NULL,
+        PRIMARY KEY (id)
+    )");
+    $db->exec("CREATE INDEX IF NOT EXISTS ci_sessions_timestamp ON ci_sessions (timestamp)");
+} catch (Exception $e) {}
 
 /*
  * --------------------------------------------------------------------
