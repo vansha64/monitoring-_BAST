@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
     git && \
     docker-php-ext-install mysqli mbstring pdo pdo_sqlite
 
-# Aktifkan mod_rewrite Apache
-RUN a2enmod rewrite
+# Aktifkan mod_rewrite Apache dan pastikan MPM yang benar yang dimuat
+RUN a2dismod mpm_event && a2enmod mpm_prefork && a2enmod rewrite
 
 # Salin semua file proyek ke dalam container
 COPY . /var/www/html/
