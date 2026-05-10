@@ -6,6 +6,16 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        
+        // Auto-fix: Pastikan tabel session ada (untuk SQLite di Cloud)
+        $this->db->query("CREATE TABLE IF NOT EXISTS ci_sessions (
+            id varchar(128) NOT NULL,
+            ip_address varchar(45) NOT NULL,
+            timestamp int(10) unsigned DEFAULT 0 NOT NULL,
+            data blob NOT NULL,
+            PRIMARY KEY (id)
+        )");
+
         $this->load->library('form_validation');
     }
     public function index()
