@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'sqlite:' . FCPATH . 'application/database/demo.sqlite',
 	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',
-	'database' => FCPATH . 'application/database/demo.sqlite',
-	'dbdriver' => 'sqlite3',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
