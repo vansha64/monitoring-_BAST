@@ -1,13 +1,3 @@
-<!-- Stylesheet & Scripts -->
-<link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
-<link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>">
-<link rel="stylesheet" href="<?= base_url('assets/vendor/boxicons/css/boxicons.min.css'); ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
-
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-<script src="<?= base_url('assets/js/main.js'); ?>"></script>
-
 <!-- Custom CSS -->
 <style>
     .navbar {

@@ -1,16 +1,3 @@
-<style>
-    /* Pastikan submenu teks putih */
-    .sidebar .nav-content a {
-        color: #ffffff !important;
-        /* putih */
-    }
-
-    /* Hover submenu tetap putih tapi dengan background transparan */
-    .sidebar .nav-content a:hover {
-        background-color: rgba(255, 255, 255, 0.2) !important;
-        color: #ffffff !important;
-    }
-</style>
 <?php
 $role_id = $this->session->userdata('role_id');
 
@@ -25,13 +12,10 @@ $menu = $this->db->query($queryMenu)->result_array();
 ?>
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar h-screen w-64 p-3 
-    bg-gradient-to-b from-blue-600 to-cyan-500 
-    text-white shadow-lg">
+<aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav space-y-2" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-        <!-- LOOPING MENU -->
         <?php foreach ($menu as $m) : ?>
             <?php
             $menuId = $m['id'];
@@ -44,39 +28,27 @@ $menu = $this->db->query($queryMenu)->result_array();
             <?php if (!empty($subMenu)) : ?>
                 <!-- Menu dengan Submenu -->
                 <li class="nav-item">
-                    <a href="javascript:void(0);"
-                        class="flex items-center justify-between nav-link submenu-toggle 
-                               px-3 py-2 rounded 
-                               hover:bg-white/20 transition"
-                        data-target="#menu-<?= $menuId; ?>">
-                        <span class="flex items-center gap-2">
-                            <i class="bi bi-list"></i>
-                            <?= $m['menu']; ?>
-                        </span>
-                        <i class="bi bi-chevron-down"></i>
+                    <a class="nav-link collapsed" data-bs-target="#menu-<?= $menuId; ?>" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-menu-button-wide"></i>
+                        <span><?= $m['menu']; ?></span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="menu-<?= $menuId; ?>"
-                        class="nav-content hidden pl-6 mt-1 space-y-1">
+                    <ul id="menu-<?= $menuId; ?>" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <?php foreach ($subMenu as $sm) : ?>
                             <li>
-                                <a href="<?= base_url($sm['url']); ?>"
-                                    class="flex items-center gap-2 px-2 py-1 rounded 
-                       hover:bg-white/20 transition text-sm text-white">
-                                    <i class="<?= !empty($sm['icon']) ? $sm['icon'] : 'bi bi-dot'; ?>"></i>
+                                <a href="<?= base_url($sm['url']); ?>">
+                                    <i class="<?= !empty($sm['icon']) ? $sm['icon'] : 'bi bi-circle'; ?>"></i>
                                     <span><?= $sm['title']; ?></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
-
                 </li>
             <?php else : ?>
                 <!-- Menu tanpa Submenu -->
                 <li class="nav-item">
-                    <a href="#"
-                        class="flex items-center gap-2 px-3 py-2 rounded 
-                              hover:bg-white/20 transition">
-                        <i class="bi bi-list"></i>
+                    <a class="nav-link collapsed" href="#">
+                        <i class="bi bi-menu-button-wide"></i>
                         <span><?= $m['menu']; ?></span>
                     </a>
                 </li>
@@ -85,14 +57,4 @@ $menu = $this->db->query($queryMenu)->result_array();
 
     </ul>
 </aside>
-
-
-<!-- JS Toggle Submenu -->
-<script>
-    document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const target = document.querySelector(this.dataset.target);
-            target.classList.toggle('hidden'); // Tailwind utility untuk show/hide
-        });
-    });
-</script>
+<!-- End Sidebar -->

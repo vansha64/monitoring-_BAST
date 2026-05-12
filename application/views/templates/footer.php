@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .footer-background {
-
-            background-size: cover;
-            background-position: center;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Content Wrapper -->
-
-    <!-- Other content of your page -->
+<!-- Other content of your page -->
 
     <!-- Footer -->
     <div class="footer-background">
