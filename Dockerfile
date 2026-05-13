@@ -6,13 +6,22 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libsqlite3-dev \
+    libzip-dev \
+    zip \
+    unzip \
     sqlite3 \
     git && \
-    docker-php-ext-install mysqli mbstring pdo pdo_sqlite
+    docker-php-ext-install mysqli mbstring pdo pdo_sqlite zip
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Salin semua file proyek
 COPY . /var/www/html/
 WORKDIR /var/www/html
+
+# Install dependencies via Composer
+RUN composer install --no-dev --optimize-autoloader
 
 # Pastikan folder database, logs, dan assets bisa diakses
 RUN mkdir -p application/database application/logs application/cache && \
@@ -23,5 +32,4 @@ RUN mkdir -p application/database application/logs application/cache && \
 RUN php setup_demo.php
 
 # Gunakan PHP Built-in Server agar tidak ada konflik Apache/MPM
-# Ini jauh lebih stabil untuk kebutuhan demo di Railway
 CMD php -S 0.0.0.0:$PORT index.php

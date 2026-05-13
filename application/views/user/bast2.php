@@ -1,34 +1,40 @@
 
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(90deg, #3b82f6, #06b6d4);
-        color: #1e293b;
-    }
-
     .main-container {
-        background-color: #ffffff;
+        background-color: #fff;
         padding: 2.5rem;
         border-radius: 1rem;
         box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
-        margin: 2rem auto;
-        max-width: 95%;
+        margin: 0 auto;
+        max-width: 100%;
         width: 100%;
     }
-
-    /* ======== TABEL ======== */
-    #data-tabel {
-        width: 100% !important;
-        border-collapse: collapse;
+    #data-tabel { width: 100% !important; border-collapse: collapse; }
+    #data-tabel thead { background: linear-gradient(90deg, #3b82f6, #06b6d4) !important; color: white; }
+    #data-tabel th { font-weight: 600; text-transform: uppercase; padding: 0.75rem; font-size: 0.8rem; border: 1px solid #e2e8f0; }
+    #data-tabel td { padding: 0.75rem; font-size: 0.85rem; color: #1e293b !important; border: 1px solid #e2e8f0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    
+    /* Column ke-4 (Pekerjaan) agar wrap teks */
+    #data-tabel th:nth-child(4), #data-tabel td:nth-child(4) { 
+        max-width: 200px; 
+        min-width: 200px; 
+        white-space: normal !important; 
+        word-wrap: break-word;
     }
 
-    #data-tabel thead {
-        background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
-        color: #ffffff !important;
-        position: sticky;
+    #data-tabel td:hover { white-space: normal; overflow: visible; background-color: #e0f2fe !important; position: relative; z-index: 1; }
+    #data-tabel tbody tr:hover { background-color: #e0f2fe !important; }
+    
+    h1, h2, h3, h4, h5, h6 { color: #1e293b !important; }
+
+    .btn-3d { position: relative; padding: 0.4rem 0.8rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; border-radius: 0.5rem; transition: all 0.2s ease; top: 0; color: #fff !important; display: inline-flex; align-items: center; justify-content: center; line-height: 1; border: none; }
+    .btn-3d.btn-teal { background-color: #14b8a6; box-shadow: 0 3px 0 #0f766e; }
+    .btn-3d.btn-teal:hover { background-color: #0d9488; transform: translateY(-2px); box-shadow: 0 5px 0 #0f766e; }
+    .btn-3d.btn-indigo { background-color: #4f46e5; box-shadow: 0 3px 0 #3730a3; }
+    .btn-3d.btn-indigo:hover { background-color: #4338ca; transform: translateY(-2px); box-shadow: 0 5px 0 #3730a3; }
+    .btn-3d:active { top: 2px; transform: translateY(0); box-shadow: none !important; }
+    </style>        position: sticky;
         top: 0;
         z-index: 10;
     }
