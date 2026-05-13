@@ -27,13 +27,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
                 </div>
             </div>
@@ -44,8 +44,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url('assets/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.473/pdf.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/main.js"></script>
 
@@ -54,7 +54,7 @@
             // Memuat DataTables setelah jQuery dimuat
             $('#data-tabel').DataTable();
 
-            $('[data-target="#Modal-import-Fa"]').click(function(e) {
+            $('[data-bs-target="#Modal-import-Fa"]').click(function(e) {
                 e.preventDefault(); // Menghentikan aksi default dari tautan
 
                 // Membuka modal
@@ -294,7 +294,8 @@
                                     img.src = imageData;
 
                                     // Append image to preview div
-                                    document.getElementById('pdfPreviewDetail').appendChild(img);
+                                    var previewDetail = document.getElementById('pdfPreviewDetail');
+                                    if (previewDetail) previewDetail.appendChild(img);
                                 });
                             });
                         }
@@ -414,7 +415,8 @@
                                     img.src = imageData;
 
                                     // Append image to preview div
-                                    document.getElementById('pdfPreviewDetail').appendChild(img);
+                                    var previewDetail = document.getElementById('pdfPreviewDetail');
+                                    if (previewDetail) previewDetail.appendChild(img);
                                 });
                             });
                         }
@@ -609,7 +611,9 @@
 
 
         function previewPDF() {
-            var file = document.getElementById('file_pdf').files[0];
+            var fileInput = document.getElementById('file_pdf');
+            if (!fileInput || !fileInput.files[0]) return;
+            var file = fileInput.files[0];
             var reader = new FileReader();
             reader.onload = function(e) {
                 var loadingTask = pdfjsLib.getDocument({
@@ -636,8 +640,11 @@
                         };
                         var renderTask = page.render(renderContext);
                         renderTask.promise.then(function() {
-                            document.getElementById('pdfPreview').innerHTML = '';
-                            document.getElementById('pdfPreview').appendChild(canvas);
+                            var preview = document.getElementById('pdfPreview');
+                            if (preview) {
+                                preview.innerHTML = '';
+                                preview.appendChild(canvas);
+                            }
                         });
                     });
                 });
@@ -682,14 +689,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const noKontrakSelect = document.getElementById('no_kontrak');
-            const idAsbuiltInput = document.getElementById('id_asbuilt');
-
-            noKontrakSelect.addEventListener('change', function() {
-                const selectedOption = noKontrakSelect.options[noKontrakSelect.selectedIndex];
-                const idAsbuilt = selectedOption.getAttribute('data-id-asbuilt');
-                idAsbuiltInput.value = idAsbuilt;
-            });
+            var noKontrakSelect = document.getElementById('no_kontrak');
+            if (noKontrakSelect) {
+                noKontrakSelect.addEventListener('change', function() {
+                    var selectedOption = this.options[this.selectedIndex];
+                    var id_insert = selectedOption.getAttribute('data-id-insert');
+                    var id_insert_input = document.getElementById('id_insert');
+                    if (id_insert_input) {
+                        id_insert_input.value = id_insert;
+                    }
+                });
+            }
         });
     </script>
     <script>
@@ -825,23 +835,29 @@
 
 
     <script>
-        document.getElementById('newFaModal').addEventListener('submit', function(event) {
-            // Ambil nilai input
-            var no_kontrak = document.getElementById('no_kontrak').value;
+        var newFaModal = document.getElementById('newFaModal');
+        if (newFaModal) {
+            newFaModal.addEventListener('submit', function(event) {
+                // Ambil nilai input
+                var no_kontrak_el = document.getElementById('no_kontrak');
+                if (!no_kontrak_el) return;
+                
+                var no_kontrak = no_kontrak_el.value;
 
-            // Lakukan pemeriksaan duplikasi dengan data yang ada di tabel
-            var isDuplicate = false;
-            document.querySelectorAll('#data-tabel tbody tr').forEach(function(row) {
-                if (row.children[1].innerText === no_kontrak) {
-                    isDuplicate = true;
+                // Lakukan pemeriksaan duplikasi dengan data yang ada di tabel
+                var isDuplicate = false;
+                document.querySelectorAll('#data-tabel tbody tr').forEach(function(row) {
+                    if (row.children[1] && row.children[1].innerText === no_kontrak) {
+                        isDuplicate = true;
+                    }
+                });
+
+                if (isDuplicate) {
+                    alert('Data dengan No Kontrak tersebut sudah ada.');
+                    event.preventDefault();
                 }
             });
-
-            if (isDuplicate) {
-                alert('Data dengan No Kontrak tersebut sudah ada.');
-                event.preventDefault();
-            }
-        });
+        }
     </script>
 
     <script>

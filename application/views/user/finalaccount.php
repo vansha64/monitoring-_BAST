@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Menggunakan variabel PHP untuk judul -->
-    <title><?= $title; ?></title>
-
-    <!-- Pemuatan CSS dan Library -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Tailwind CSS (Script, digunakan untuk beberapa kelas responsif) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome untuk ikon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<main id="main" class="main">
 
     <style>
     /* Menggunakan font Inter */
@@ -280,7 +263,7 @@
                 <h5 class="modal-title" id="fillCreatedByModalLabel">
                     <i class="fas fa-exclamation-triangle mr-2"></i> Isi Created By Data Lama
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -333,7 +316,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fas fa-times mr-1"></i> Batal
                 </button>
                 <button type="button" class="btn btn-danger" id="btnConfirmFill">
@@ -451,5 +434,4 @@ $(document).ready(function() {
             autoWidth: false
         });
     }
-});
-</script>
+</main>

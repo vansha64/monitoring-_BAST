@@ -1,225 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-
-    <!-- Bootstrap & Tailwind -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-
+<main id="main" class="main">
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(90deg, #3b82f6, #06b6d4);
-        color: #1e293b;
-    }
-
     .main-container {
         background-color: #ffffff;
         padding: 2.5rem;
         border-radius: 1rem;
         box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
-        margin: 2rem auto;
-        max-width: 95%;
+        margin: 0 auto;
+        max-width: 100%;
         width: 100%;
         color: #1e293b;
     }
-
-    /* ====== DataTables UI ====== */
-    .dataTables_wrapper .dataTables_length,
-    .dataTables_wrapper .dataTables_filter,
-    .dataTables_wrapper .dataTables_info,
-    .dataTables_wrapper .dataTables_processing,
-    .dataTables_wrapper .dataTables_paginate {
-        color: #1e293b !important;
-    }
-
-    .dataTables_wrapper .dataTables_filter input,
-    .dataTables_wrapper .dataTables_length select {
-        background-color: #f1f5f9 !important;
-        border: 1px solid #cbd5e1 !important;
-        color: #1e293b !important;
-        border-radius: 0.5rem;
-        padding: 0.5rem;
-        margin: 0 0.5rem;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        background-color: #ffffff !important;
-        border: 1px solid #cbd5e1 !important;
-        color: #2563eb !important;
-        border-radius: 0.5rem !important;
-        margin: 0 0.25rem !important;
-        padding: 0.5rem 0.75rem !important;
-        transition: all 0.2s;
-        cursor: pointer;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.disabled) {
-        background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
-        border-color: #3b82f6 !important;
-        color: #ffffff !important;
-        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-        color: #94a3b8 !important;
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    /* ====== OPTIMASI TABEL ====== */
-    #asbuilt-data-tabel th,
-    #asbuilt-data-tabel td {
-        padding: 0.4rem 0.5rem !important;
-        font-size: 0.85rem !important;
-        vertical-align: middle !important;
-        border-color: #e2e8f0 !important;
-    }
-
-    #asbuilt-data-tabel thead th {
-        background: linear-gradient(90deg, #3b82f6, #06b6d4);
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.4px;
-        white-space: nowrap;
-    }
-
-    #asbuilt-data-tabel td {
-        max-width: 160px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        position: relative;
-    }
-
-    #asbuilt-data-tabel td:hover {
-        white-space: normal;
-        overflow: visible;
-        background-color: #e0f2fe !important;
-        z-index: 10;
-        position: relative;
-    }
-
-    #asbuilt-data-tabel tbody tr:nth-child(odd) {
-        background-color: #f8fafc;
-    }
-
-    #asbuilt-data-tabel tbody tr:nth-child(even) {
-        background-color: #f1f5f9;
-    }
-
-    #asbuilt-data-tabel tbody tr:hover {
-        background-color: #e0f2fe !important;
-    }
-
-    .table-responsive {
-        overflow-x: auto;
-        max-width: 100%;
-    }
-
-    /* ====== BUTTONS CERAH ====== */
-    .btn-3d {
-        position: relative;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-        top: 0;
-        color: #fff !important;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        border: none;
-    }
-
-    .btn-3d.btn-teal {
-        background-color: #14b8a6;
-        box-shadow: 0 3px 0 #0f766e;
-    }
-
-    .btn-3d.btn-teal:hover {
-        background-color: #0d9488;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 0 #0f766e;
-    }
-
-    .btn-3d:active {
-        top: 2px;
-        transform: translateY(0);
-        box-shadow: none !important;
-    }
-
-    /* ===== MODERN FORM STYLING ===== */
-    .modal-body .form-control:focus {
-        border-color: #667eea !important;
-        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important;
-        outline: none;
-        transition: all 0.3s ease;
-    }
-
-    .modal-body .form-control {
-        transition: all 0.3s ease;
-        font-size: 0.95rem;
-    }
-
-    .modal-body textarea.form-control:focus {
-        border-color: #ffc107 !important;
-        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important;
-    }
-
-    .modal-body input[type="date"].form-control:focus {
-        border-color: #ffc107 !important;
-        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important;
-    }
-
-    /* Hover effects untuk input readonly */
-    .modal-body input[readonly] {
-        cursor: not-allowed;
-        opacity: 0.75;
-    }
-
-    /* Modal smooth animation */
-    .modal.fade .modal-dialog {
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-    }
-
-    /* Button hover effects */
-    .modal-footer .btn-light:hover {
-        background: white !important;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
-    }
-
-    .modal-footer button[type="submit"]:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
-    }
+    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { color: #1e293b !important; }
+    .dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select { background-color: #f1f5f9 !important; border: 1px solid #cbd5e1 !important; color: #1e293b !important; border-radius: 0.5rem; padding: 0.5rem; margin: 0 0.5rem; }
+    .dataTables_wrapper .dataTables_paginate .paginate_button { background-color: #ffffff !important; border: 1px solid #cbd5e1 !important; color: #2563eb !important; border-radius: 0.5rem !important; margin: 0 0.25rem !important; padding: 0.5rem 0.75rem !important; transition: all 0.2s; cursor: pointer; }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.disabled) { background: linear-gradient(90deg, #3b82f6, #06b6d4) !important; border-color: #3b82f6 !important; color: #ffffff !important; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4); }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled { color: #94a3b8 !important; opacity: 0.5; cursor: not-allowed; }
+    #asbuilt-data-tabel th, #asbuilt-data-tabel td { padding: 0.4rem 0.5rem !important; font-size: 0.85rem !important; vertical-align: middle !important; border-color: #e2e8f0 !important; }
+    #asbuilt-data-tabel thead th { background: linear-gradient(90deg, #3b82f6, #06b6d4); color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.4px; white-space: nowrap; }
+    #asbuilt-data-tabel td { max-width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; }
+    #asbuilt-data-tabel td:hover { white-space: normal; overflow: visible; background-color: #e0f2fe !important; z-index: 10; position: relative; }
+    #asbuilt-data-tabel tbody tr:nth-child(odd) { background-color: #f8fafc; }
+    #asbuilt-data-tabel tbody tr:nth-child(even) { background-color: #f1f5f9; }
+    #asbuilt-data-tabel tbody tr:hover { background-color: #e0f2fe !important; }
+    .table-responsive { overflow-x: auto; max-width: 100%; }
+    .btn-3d { position: relative; padding: 0.4rem 0.8rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; border-radius: 0.5rem; transition: all 0.2s ease; top: 0; color: #fff !important; display: inline-flex; align-items: center; justify-content: center; line-height: 1; border: none; }
+    .btn-3d.btn-teal { background-color: #14b8a6; box-shadow: 0 3px 0 #0f766e; }
+    .btn-3d.btn-teal:hover { background-color: #0d9488; transform: translateY(-2px); box-shadow: 0 5px 0 #0f766e; }
+    .btn-3d:active { top: 2px; transform: translateY(0); box-shadow: none !important; }
+    .modal-body .form-control:focus { border-color: #667eea !important; box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important; outline: none; transition: all 0.3s ease; }
+    .modal-body .form-control { transition: all 0.3s ease; font-size: 0.95rem; }
+    .modal-body textarea.form-control:focus { border-color: #ffc107 !important; box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important; }
+    .modal-body input[type="date"].form-control:focus { border-color: #ffc107 !important; box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important; }
+    .modal-body input[readonly] { cursor: not-allowed; opacity: 0.75; }
+    .modal.fade .modal-dialog { transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
+    .modal-footer .btn-light:hover { background: white !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important; }
+    .modal-footer button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important; }
     </style>
-</head>
-
-
-<body class="bg-gradient-to-r from-white via-cyan-100 to-cyan-400 min-h-screen">
     <div class="main-container mx-auto">
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary mb-3 btn-3d" data-toggle="modal"
-                    data-target="#newAsBuiltDrawingModal">Tambah Data</button>
+                <button class="btn btn-primary mb-3 btn-3d" data-bs-toggle="modal"
+                    data-bs-target="#newAsBuiltDrawingModal">Tambah Data</button>
                 <div class="table-responsive">
                     <table class="table table-bordered mb-3" id="asbuilt-data-tabel" width="100%">
                         <thead class="thead-light">
@@ -247,16 +68,16 @@
                                 <td><?= $row['status']; ?></td>
                                 <td><?= $row['keterangan']; ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-info btn-detail" data-toggle="modal"
-                                        data-target="#detailModal" data-id="<?= $row['id_asbuilt']; ?>"
+                                    <button type="button" class="btn btn-sm btn-info btn-detail" data-bs-toggle="modal"
+                                        data-bs-target="#detailModal" data-id="<?= $row['id_asbuilt']; ?>"
                                         data-nokontrak="<?= $row['no_kontrak']; ?>"
                                         data-namapt="<?= $row['nama_pt']; ?>" data-pekerjaan="<?= $row['pekerjaan']; ?>"
                                         data-tglterima="<?= $row['tgl_terima']; ?>" data-status="<?= $row['status']; ?>"
                                         data-keterangan="<?= $row['keterangan']; ?>">
                                         <i class="fas fa-eye mr-1"></i> Detail
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-warning btn-edit" data-toggle="modal"
-                                        data-target="#editModal" data-id="<?= $row['id_asbuilt']; ?>"
+                                    <button type="button" class="btn btn-sm btn-warning btn-edit" data-bs-toggle="modal"
+                                        data-bs-target="#editModal" data-id="<?= $row['id_asbuilt']; ?>"
                                         data-nokontrak="<?= $row['no_kontrak']; ?>"
                                         data-namapt="<?= $row['nama_pt']; ?>" data-pekerjaan="<?= $row['pekerjaan']; ?>"
                                         data-tglterima="<?= $row['tgl_terima']; ?>" data-status="<?= $row['status']; ?>"
@@ -290,7 +111,7 @@
                         </h5>
                         <small class="text-light opacity-75">Informasi lengkap data Asbuilt Drawing</small>
                     </div>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close"
                         style="font-size: 1.5rem; opacity: 0.8;">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -409,7 +230,7 @@
 
                 <!-- Footer -->
                 <div class="modal-footer border-top-0 p-4" style="background: #f8f9fa; border-radius: 0 0 12px 12px;">
-                    <button type="button" class="btn text-white font-weight-600" data-dismiss="modal"
+                    <button type="button" class="btn text-white font-weight-600" data-bs-dismiss="modal"
                         style="background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); border: none; border-radius: 8px; padding: 0.65rem 2rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4);">
                         <i class="fas fa-arrow-left mr-1"></i>
                         Kembali
@@ -436,7 +257,7 @@
                         </h5>
                         <small class="text-light opacity-75">Perbarui informasi data Asbuilt Drawing</small>
                     </div>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close"
                         style="font-size: 1.5rem; opacity: 0.8;">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -524,7 +345,7 @@
                     <!-- Footer with Modern Buttons -->
                     <div class="modal-footer border-top-0 p-4"
                         style="background: #f8f9fa; border-radius: 0 0 12px 12px;">
-                        <button type="button" class="btn btn-light border" data-dismiss="modal"
+                        <button type="button" class="btn btn-light border" data-bs-dismiss="modal"
                             style="border-radius: 8px; padding: 0.65rem 1.5rem; font-weight: 600; transition: all 0.3s ease; color: #667eea; border: 2px solid #667eea;">
                             <i class="fas fa-times mr-1"></i> Batal
                         </button>
@@ -543,7 +364,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="newAsBuiltDrawingModalLabel">Tambah Data Baru</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -596,7 +417,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
@@ -800,6 +621,5 @@
         });
     });
     </script>
-</body>
-
-</html>
+    </div><!-- end main-container -->
+</main>

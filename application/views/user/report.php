@@ -225,7 +225,7 @@
             <div class="modal-content border-0 shadow-lg rounded-lg">
                 <div class="modal-header bg-blue-600 text-white rounded-t-lg">
                     <h5 class="modal-title font-semibold" id="detailModalLabel">Detail Informasi</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="text-2xl">&times;</span>
                     </button>
                 </div>

@@ -235,12 +235,12 @@
                             <!-- Action Buttons: Ensured responsiveness with flex/col/row -->
                             <td class="py-2 px-3 space-y-1 md:space-y-0 md:space-x-1 flex flex-col md:flex-row items-center justify-center">
                                 <button type="button" class="btn-3d btn-teal text-white transition text-xs py-1 px-2 btn-detail"
-                                    data-toggle="modal" data-target="#detailModal2"
+                                    data-bs-toggle="modal" data-bs-target="#detailModal2"
                                     data-nokontrak="<?= $data['no_kontrak']; ?>" data-namapt="<?= $data['nama_pt']; ?>" data-pekerjaan="<?= $data['pekerjaan']; ?>" data-tanggalasbuilt="<?= $data['tanggal_terima_asbuilt']; ?>" data-tglterimabast="<?= $data['tgl_terima_bast']; ?>" data-filepdf="<?= $data['file_pdf']; ?>" data-tglterimabast2="<?= $data['tgl_terima_bast2']; ?>" data-tglpom="<?= $data['tgl_pom']; ?>" data-kembalipom="<?= $data['kembali_pom']; ?>" data-tglpusat2="<?= $data['tgl_pusat2']; ?>" data-tglkontraktor2="<?= $data['tgl_kontraktor2']; ?>" data-filepdfbast2="<?= $data['file_pdf_bast2']; ?>" data-keterangan="<?= $data['keterangan2']; ?>">
                                     <i class="fas fa-eye mr-1"></i> Detail
                                 </button>
                                 <button type="button" class="btn-3d btn-indigo text-white edit-btn transition text-xs py-1 px-2"
-                                    data-toggle="modal" data-target="#editModal2"
+                                    data-bs-toggle="modal" data-bs-target="#editModal2"
                                     data-id_bast2="<?= $data['id_bast2']; ?>" data-nokontrak="<?= $data['no_kontrak']; ?>" data-namapt="<?= $data['nama_pt']; ?>" data-pekerjaan="<?= $data['pekerjaan']; ?>" data-tglterimabast="<?= $data['tgl_terima_bast']; ?>" data-tglterimabast2="<?= $data['tgl_terima_bast2']; ?>" data-tglpom="<?= $data['tgl_pom']; ?>" data-kembalipom="<?= $data['kembali_pom']; ?>" data-tglpusat2="<?= $data['tgl_pusat2']; ?>" data-tglkontraktor2="<?= $data['tgl_kontraktor2']; ?>" data-keterangan="<?= $data['keterangan2']; ?>" data-filepdfbast2="<?= $data['file_pdf_bast2']; ?>">
                                     <i class="fas fa-pen mr-1"></i> Edit
                                 </button>
@@ -266,7 +266,7 @@
                         <!-- Header -->
                         <div class="modal-header border-b pb-3 mb-4 flex justify-between items-center">
                             <h5 class="text-2xl font-bold text-gray-800" id="detailModalLabel"><i class="fas fa-info-circle mr-2 text-teal-600"></i> Detail Data BAST 2</h5>
-                            <button type="button" class="text-gray-500 hover:text-gray-900 transition focus:outline-none" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="text-gray-500 hover:text-gray-900 transition focus:outline-none" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="text-3xl font-light">&times;</span>
                             </button>
                         </div>
@@ -320,7 +320,7 @@
                         <!-- Header: Updated with Indigo background -->
                         <div class="modal-header bg-indigo-600 text-white p-5 rounded-t-xl mb-4 flex justify-between items-center">
                             <h5 class="text-2xl font-bold" id="editModalLabel"><i class="fas fa-edit mr-2"></i> Edit Data BAST 2 (TTD Proses)</h5>
-                            <button type="button" class="text-white opacity-90 hover:opacity-100 transition focus:outline-none" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="text-white opacity-90 hover:opacity-100 transition focus:outline-none" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="text-3xl font-light">&times;</span>
                             </button>
                         </div>
@@ -410,7 +410,7 @@
 
                                 <!-- Footer -->
                                 <div class="modal-footer pt-6 border-t border-gray-200 flex justify-end space-x-3">
-                                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition" data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition" data-bs-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn-3d btn-indigo text-white shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                         <i class="fas fa-save mr-1"></i> Simpan Perubahan
                                     </button>

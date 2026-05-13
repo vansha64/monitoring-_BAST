@@ -14,9 +14,10 @@ RUN apt-get update && apt-get install -y \
 COPY . /var/www/html/
 WORKDIR /var/www/html
 
-# Pastikan folder database dan logs bisa ditulis
+# Pastikan folder database, logs, dan assets bisa diakses
 RUN mkdir -p application/database application/logs application/cache && \
-    chmod -R 777 application/database application/logs application/cache
+    chmod -R 777 application/database application/logs application/cache && \
+    chmod -R 755 assets
 
 # Jalankan setup database dummy saat build
 RUN php setup_demo.php

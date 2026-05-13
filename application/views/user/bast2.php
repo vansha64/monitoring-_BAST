@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-
-    <!-- Bootstrap & Tailwind -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -216,12 +202,8 @@
         flex-shrink: 0;
     }
     </style>
-</head>
 
-
-<body class="bg-gradient-to-r from-white via-cyan-100 to-cyan-400 min-h-screen">
-
-
+<main id="main" class="main">
     <div class="main-container mx-auto">
         <h1 class="text-3xl font-bold text-gray-800 mb-8 border-b border-gray-200 pb-3">
             <i class="fas fa-file-signature text-indigo-600 mr-3"></i>Data BAST 2 <span
@@ -422,7 +404,7 @@
                             <div class="action-buttons">
                                 <button type="button"
                                     class="btn-3d btn-teal btn-detail"
-                                    data-toggle="modal" data-target="#detailModal2"
+                                    data-bs-toggle="modal" data-bs-target="#detailModal2"
                                     data-nokontrak="<?= $data['no_kontrak']; ?>" data-namapt="<?= $data['nama_pt']; ?>"
                                     data-pekerjaan="<?= $data['pekerjaan']; ?>"
                                     data-tanggalasbuilt="<?= $data['tanggal_terima_asbuilt']; ?>"
@@ -442,7 +424,7 @@
                                 </button>
                                 <button type="button"
                                     class="btn-3d btn-indigo edit-btn"
-                                    data-toggle="modal" data-target="#editModal2" data-id_bast2="<?= $data['id_bast2']; ?>"
+                                    data-bs-toggle="modal" data-bs-target="#editModal2" data-id_bast2="<?= $data['id_bast2']; ?>"
                                     data-nokontrak="<?= $data['no_kontrak']; ?>" data-namapt="<?= $data['nama_pt']; ?>"
                                     data-pekerjaan="<?= $data['pekerjaan']; ?>"
                                     data-tglterimabast="<?= $data['tgl_terima_bast']; ?>"
@@ -485,7 +467,7 @@
                                     class="fas fa-info-circle mr-2 text-teal-600"></i> Detail Data BAST 2</h5>
                             <button type="button"
                                 class="text-gray-500 hover:text-gray-900 transition focus:outline-none"
-                                data-dismiss="modal" aria-label="Close">
+                                data-bs-dismiss="modal" aria-label="Close">
                                 <span class="text-3xl font-light">&times;</span>
                             </button>
                         </div>
@@ -576,7 +558,7 @@
                                 Data BAST 2 (TTD Proses)</h5>
                             <button type="button"
                                 class="text-white opacity-90 hover:opacity-100 transition focus:outline-none"
-                                data-dismiss="modal" aria-label="Close">
+                                data-bs-dismiss="modal" aria-label="Close">
                                 <span class="text-3xl font-light">&times;</span>
                             </button>
                         </div>
@@ -753,7 +735,7 @@
                                 <div class="modal-footer pt-6 border-t border-gray-200 flex justify-end space-x-3">
                                     <button type="button"
                                         class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-                                        data-dismiss="modal">Tutup</button>
+                                        data-bs-dismiss="modal">Tutup</button>
                                     <button type="submit"
                                         class="btn-3d btn-indigo text-white shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                         <i class="fas fa-save mr-1"></i> Simpan Perubahan
@@ -795,7 +777,7 @@
                     <h5 class="modal-title" id="fillCreatedByModalLabel">
                         <i class="fas fa-exclamation-triangle mr-2"></i> Isi Created By Data Lama
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -816,7 +798,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fas fa-times mr-1"></i> Batal
                     </button>
                     <button type="button" class="btn btn-danger" id="btnConfirmFill">
@@ -1037,6 +1019,5 @@
         });
     });
     </script>
-</body>
-
-</html>
+    </div><!-- end main-container -->
+</main>

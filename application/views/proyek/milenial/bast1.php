@@ -152,7 +152,7 @@
             </div>
         <?php endif; ?>
 
-        <div class="btn-group mb-3" role="group"> <a href="#" class="btn btn-primary btn-3d" data-toggle="modal" data-target="#addBastModal">Tambah Data</a> <a href="#" class="btn btn-success btn-3d" data-toggle="modal" data-target="#newFaModal">Tambah Data insert</a> <a href="<?= site_url('user/export_bast') ?>" class="btn btn-primary btn-3d"> <i class="fas fa-file-download"></i> Export Excel </a> </div>
+        <div class="btn-group mb-3" role="group"> <a href="#" class="btn btn-primary btn-3d" data-bs-toggle="modal" data-bs-target="#addBastModal">Tambah Data</a> <a href="#" class="btn btn-success btn-3d" data-bs-toggle="modal" data-bs-target="#newFaModal">Tambah Data insert</a> <a href="<?= site_url('user/export_bast') ?>" class="btn btn-primary btn-3d"> <i class="fas fa-file-download"></i> Export Excel </a> </div>
     </div>
 
 
@@ -192,7 +192,7 @@
                         <td class="py-2 px-3 flex flex-col md:flex-row items-center justify-center space-y-1 md:space-y-0 md:space-x-2">
                             <!-- Detail -->
                             <button type="button" class="btn-3d btn-teal text-white text-xs py-1 px-2 btn-detail"
-                                data-toggle="modal" data-target="#detailModal1"
+                                data-bs-toggle="modal" data-bs-target="#detailModal1"
                                 data-nokontrak="<?= $data['no_kontrak']; ?>"
                                 data-namapt="<?= $data['nama_pt']; ?>"
                                 data-pekerjaan="<?= $data['pekerjaan']; ?>"
@@ -209,7 +209,7 @@
 
                             <!-- Edit -->
                             <button type="button" class="btn-3d btn-indigo text-white text-xs py-1 px-2 edit-btn"
-                                data-toggle="modal" data-target="#editModal1"
+                                data-bs-toggle="modal" data-bs-target="#editModal1"
                                 data-id_bast="<?= $data['id_bast']; ?>"
 
                                 data-nokontrak="<?= $data['no_kontrak']; ?>"
@@ -247,7 +247,7 @@
                     <h5 class="text-2xl font-bold text-gray-800">
                         <i class="fas fa-info-circle mr-2 text-teal-600"></i> Detail Data BAST 1
                     </h5>
-                    <button type="button" class="text-gray-500 hover:text-gray-900 transition" data-dismiss="modal">
+                    <button type="button" class="text-gray-500 hover:text-gray-900 transition" data-bs-dismiss="modal">
                         <span class="text-3xl font-light">&times;</span>
                     </button>
                 </div>
@@ -299,7 +299,7 @@
                     <h5 class="text-2xl font-bold">
                         <i class="fas fa-edit mr-2"></i> Edit Data BAST 1
                     </h5>
-                    <button type="button" class="text-white opacity-90 hover:opacity-100 transition" data-dismiss="modal">
+                    <button type="button" class="text-white opacity-90 hover:opacity-100 transition" data-bs-dismiss="modal">
                         <span class="text-3xl font-light">&times;</span>
                     </button>
                 </div>
@@ -374,7 +374,7 @@
 
                         <!-- Footer -->
                         <div class="modal-footer pt-6 border-t border-gray-200 flex justify-end space-x-3">
-                            <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn-3d btn-indigo text-white shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 <i class="fas fa-save mr-1"></i> Simpan Perubahan
                             </button>
@@ -390,7 +390,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="addBastModalLabel">Tambah Data BAST</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <h5 class="modal-title" id="addBastModalLabel">Tambah Data BAST</h5> <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('user/add_bast_data'); ?>" method="post" enctype="multipart/form-data">
@@ -424,7 +424,7 @@
                         </div>
                     </form>
                 </div> <!-- Modal Footer -->
-                <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button> </div>
+                <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button> </div>
             </div>
         </div>
     </div>

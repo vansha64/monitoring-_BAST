@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
+<link rel="stylesheet" href="<?= base_url('assets/css/parkir.css'); ?>">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- PHP Title: Kept intact -->
-    <title><?= $title; ?></title>
-
-    <!-- 1. Bootstrap CSS (PENTING untuk Sidebar Collapse dan Modals) -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- 2. Tailwind CSS CDN for modern styling (Dibuat setelah Bootstrap) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-
-    <!-- Custom Tailwind Configuration and Overrides -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/parkir.css'); ?>">
-
-</head>
-
-
-<body class="bg-gradient-to-r from-white via-cyan-100 to-cyan-400 min-h-screen">
-
-
+<main id="main" class="main">
     <div class="main-container">
         <!-- Page Heading -->
         <?php if ($this->session->flashdata('message')) : ?>
@@ -43,7 +18,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="reminderModalLabel">Reminder!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -77,7 +52,7 @@
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -92,11 +67,11 @@
                 <a href="<?= base_url('user/export_parkir'); ?>" class="btn btn-success">
                     <i class="fas fa-file-export"></i> Export Data
                 </a>
-                <a href="#newParkirmodal" class="btn btn-primary" data-toggle="modal">
+                <a href="#newParkirmodal" class="btn btn-primary" data-bs-toggle="modal">
                     <i class="fas fa-plus"></i> Tambah Member Parkir
                 </a>
                 <!-- Tombol untuk membuka modal import -->
-                <a href="#importModal" class="btn btn-warning" data-toggle="modal">
+                <a href="#importModal" class="btn btn-warning" data-bs-toggle="modal">
                     <i class="fas fa-upload"></i> Import Data
                 </a>
             </div>
@@ -161,7 +136,7 @@
                             <td>
                                 <div class="buttons">
                                     <!-- Button to trigger Detail Modal -->
-                                    <button class="btn btn-info btn-detail" data-toggle="modal" data-target="#detailModal"
+                                    <button class="btn btn-info btn-detail" data-bs-toggle="modal" data-bs-target="#detailModal"
                                         data-id_parkir="<?= $data['id_parkir']; ?>"
                                         data-perusahaan="<?= htmlspecialchars($data['perusahaan'] ?? ''); ?>"
                                         data-nama_member="<?= htmlspecialchars($data['nama_member'] ?? ''); ?>"
@@ -176,8 +151,8 @@
                                     </button>
 
                                     <!-- Button to trigger Edit Modal -->
-                                    <button type="button" class="btn btn-primary edit-btn" data-toggle="modal"
-                                        data-target="#editModal" data-id_parkir="<?= $data['id_parkir']; ?>"
+                                    <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal"
+                                        data-bs-target="#editModal" data-id_parkir="<?= $data['id_parkir']; ?>"
                                         data-perusahaan="<?= htmlspecialchars($data['perusahaan'] ?? ''); ?>"
                                         data-nama_member="<?= htmlspecialchars($data['nama_member'] ?? ''); ?>"
                                         data-no_kendaraan="<?= htmlspecialchars($data['no_kendaraan'] ?? ''); ?>"
@@ -206,7 +181,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="newParkirmodal">Add New Partial Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -258,7 +233,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </form>
@@ -273,7 +248,7 @@
                 <div class="modal-content shadow-lg rounded-lg">
                     <div class="modal-header bg-gradient-primary text-white">
                         <h5 class="modal-title" id="detailModalLabel">Detail Parkir</h5>
-                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -343,7 +318,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </form>
                     </div>
                 </div>
@@ -357,7 +332,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editModalLabel">Edit Parkir</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -414,7 +389,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="saveChanges">Save changes</button>
                         <button type="button" id="nonActiveBtn" class="btn btn-danger">Non Active</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                     </form>
                 </div>
@@ -428,7 +403,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="importModalLabel">Import Data Parkir</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -443,7 +418,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -685,7 +660,5 @@
 
         });
     </script>
-
-</body>
-
-</html>
+    </div><!-- end main-container -->
+</main>

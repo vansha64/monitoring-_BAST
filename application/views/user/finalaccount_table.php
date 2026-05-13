@@ -192,7 +192,7 @@
                 <!-- Flash Message (assuming CI session flashdata) -->
                 <?= $this->session->flashdata('message'); ?>
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="#" class="btn btn-primary btn-3d mb-2 mr-2" data-toggle="modal" data-target="#newFaModal">
+                    <a href="#" class="btn btn-primary btn-3d mb-2 mr-2" data-bs-toggle="modal" data-target="#newFaModal">
                         <i class="fas fa-plus mr-1"></i> Tambah Data
                     </a>
                     <div class="dropdown mb-2 mr-2">
@@ -200,7 +200,7 @@
                             <i class="fas fa-file-import mr-1"></i> Import
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal-import-Fa">
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-target="#Modal-import-Fa">
                                 <i class="fas fa-upload mr-1"></i> Upload File
                             </a>
                         </div>
@@ -246,13 +246,13 @@
 
                                         <!-- Tombol Detail -->
                                         <a href="#" class="btn-3d bg-teal-500 hover:bg-teal-600 text-white transition text-xs py-1 px-2 rounded-md btn-detail w-full md:w-auto"
-                                            data-toggle="modal" data-target="#finalAccountDetailModal" data-id="<?= $fa['id']; ?>">
+                                            data-bs-toggle="modal" data-target="#finalAccountDetailModal" data-id="<?= $fa['id']; ?>">
                                             <i class="fas fa-eye mr-1"></i> Detail
                                         </a>
 
                                         <!-- Tombol Edit (PENTING: Menggunakan class 'edit-btn' dan data-id) -->
                                         <a href="#" class="btn-3d bg-indigo-500 hover:bg-indigo-600 text-white edit-btn transition text-xs py-1 px-2 rounded-md w-full md:w-auto"
-                                            data-toggle="modal" data-target="#editFaModal" data-id="<?= $fa['id']; ?>">
+                                            data-bs-toggle="modal" data-target="#editFaModal" data-id="<?= $fa['id']; ?>">
                                             <i class="fas fa-pen mr-1"></i> Edit
                                         </a>
 

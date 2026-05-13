@@ -195,7 +195,7 @@
 
         <!-- Buttons -->
         <div class="mb-4 flex flex-wrap gap-3">
-            <a href="#newMasukmodal" class="btn-modern btn-primary" data-toggle="modal">
+            <a href="#newMasukmodal" class="btn-modern btn-primary" data-bs-toggle="modal">
                 <i class="fas fa-plus"></i> Tambah Data Barang
             </a>
             <a href="<?= base_url('Gudang/export') ?>" class="btn-modern btn-success">
@@ -208,7 +208,7 @@
                 <div class="modal-content rounded-3">
                     <div class="modal-header">
                         <h5 class="modal-title">Preview Foto</h5>
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
                         <img id="fotoPreview" src="#" alt="Foto Barang" class="img-fluid rounded">
@@ -269,8 +269,8 @@
                                         alt="Foto Barang"
                                         class="img-thumbnail foto-table"
                                         style="width:50px;height:50px;object-fit:cover;cursor:pointer;"
-                                        data-toggle="modal"
-                                        data-target="#fotoModal"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#fotoModal"
                                         data-foto="<?= base_url('./assets/upload/foto/' . $item['foto']); ?>">
                                 <?php else: ?>
                                     <span class="text-muted">Tidak Ada</span>
@@ -291,7 +291,7 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="actionDropdown<?= $item['id']; ?>">
                                         <a class="dropdown-item btn-detail" href="javascript:void(0);"
-                                            data-toggle="modal" data-target="#detailModal"
+                                            data-bs-toggle="modal" data-bs-target="#detailModal"
                                             data-id="<?= htmlspecialchars($item['id'] ?? ''); ?>"
                                             data-jenis_barang="<?= htmlspecialchars($item['jenis_barang'] ?? ''); ?>"
                                             data-nama_barang="<?= htmlspecialchars($item['nama_barang'] ?? ''); ?>"
@@ -308,7 +308,7 @@
                                             Detail
                                         </a>
                                         <a class="dropdown-item edit-btn" href="javascript:void(0);"
-                                            data-toggle="modal" data-target="#editModal"
+                                            data-bs-toggle="modal" data-bs-target="#editModal"
                                             data-id="<?= htmlspecialchars($item['id']); ?>"
                                             data-jenis_barang="<?= htmlspecialchars($item['jenis_barang']); ?>"
                                             data-nama_barang="<?= htmlspecialchars($item['nama_barang']); ?>"
@@ -323,7 +323,7 @@
                                             Edit
                                         </a>
                                         <a class="dropdown-item btn-pindah-barang" href="javascript:void(0);"
-                                            data-toggle="modal" data-target="#pindahModal"
+                                            data-bs-toggle="modal" data-bs-target="#pindahModal"
                                             data-id="<?= htmlspecialchars($item['id']); ?>"
                                             data-jenis_barang="<?= htmlspecialchars($item['jenis_barang']); ?>"
                                             data-nama_barang="<?= htmlspecialchars($item['nama_barang']); ?>"
@@ -354,7 +354,7 @@
             <div class="modal-content shadow-lg border-0 rounded-3">
                 <div class="modal-header bg-light border-bottom-0">
                     <h5 class="modal-title fw-bold" id="newMasukmodalLabel">Tambah Barang Masuk</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="<?= base_url('Gudang/add'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body p-4">
@@ -432,7 +432,7 @@
                         </div>
                     </div>
                     <div class="modal-footer bg-light border-top-0">
-                        <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary px-4 rounded-pill fw-semibold">Tambah</button>
                     </div>
                 </form>
@@ -446,7 +446,7 @@
             <div class="modal-content shadow-lg border-0 rounded-4">
                 <div class="modal-header bg-primary text-white border-bottom-0 rounded-top-4">
                     <h5 class="modal-title fw-bold">Edit Barang Masuk</h5>
-                    <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editForm" method="post" action="<?= base_url('Gudang/update'); ?>" enctype="multipart/form-data">
                     <div class="modal-body p-4">
@@ -517,7 +517,7 @@
                         </div>
                     </div>
                     <div class="modal-footer bg-light border-top-0">
-                        <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary px-4 rounded-pill fw-semibold">Simpan Perubahan</button>
                     </div>
                 </form>
@@ -532,7 +532,7 @@
             <div class="modal-content shadow-lg border-0 rounded-3">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title fw-bold" id="detailModalLabel">Detail Barang Masuk</h5>
-                    <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row g-3">
@@ -558,7 +558,7 @@
                     </div>
                 </div>
                 <div class="modal-footer bg-light border-top-0">
-                    <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary px-4 rounded-pill fw-semibold" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
@@ -570,7 +570,7 @@
             <div class="modal-content rounded-3 shadow-lg border-0">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="pindahModalLabel">Pindahkan Barang</h5>
-                    <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="pindahForm" method="post" action="<?= base_url('Gudang/pindahkan_barang'); ?>">
                     <div class="modal-body">
@@ -623,7 +623,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary rounded-pill">Pindahkan</button>
                     </div>
                 </form>

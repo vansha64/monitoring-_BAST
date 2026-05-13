@@ -33,14 +33,14 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 
 # Folder upload
-uploads/
-upload/
-file_upload/
-assets/upload/
-assets/img/
-assets/coba/
-exports/
-assets/backup/
+# uploads/
+# upload/
+# file_upload/
+# assets/upload/
+# assets/img/
+# assets/coba/
+# exports/
+# assets/backup/
 # Backup database
 database backup/
 db_backup/

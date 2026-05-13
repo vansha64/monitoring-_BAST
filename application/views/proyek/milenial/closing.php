@@ -174,12 +174,12 @@
                                     data-tgl_terima_bast="<?= $fa['tgl_terima_bast']; ?>"
                                     data-tgl_closing="<?= $fa['tgl_closing']; ?>"
                                     data-keterangan="<?= $fa['keterangan_fa']; ?>"
-                                    data-toggle="modal"
-                                    data-target="#editFaModal">
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editFaModal">
                                     <i class="fas fa-edit"></i> EDIT
                                 </button>
 
-                                <button type="button" class="btn-3d btn-3d-green btn-detail" data-id="<?= $fa['id_closing']; ?>" data-toggle="modal" data-target="#finalAccountDetailModal" title="Detail">
+                                <button type="button" class="btn-3d btn-3d-green btn-detail" data-id="<?= $fa['id_closing']; ?>" data-bs-toggle="modal" data-bs-target="#finalAccountDetailModal" title="Detail">
                                     <i class="fas fa-eye"></i>
                                 </button>
                                 <button type="button" class="btn-3d btn-3d-red btn-delete" data-id="<?= $fa['id_closing']; ?>" title="Hapus">
@@ -201,7 +201,7 @@
             <div class="modal-content shadow-lg border-0 rounded-xl overflow-hidden">
                 <div class="modal-header text-white" style="background: linear-gradient(90deg, #3b82f6, #06b6d4);">
                     <h5 class="modal-title font-semibold">✏️ Edit Final Account</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -244,7 +244,7 @@
                         <button type="submit" class="btn-3d btn-3d-blue">
                             <i class="fas fa-save"></i> Save Changes
                         </button>
-                        <button type="button" class="btn-3d btn-3d-red" data-dismiss="modal">
+                        <button type="button" class="btn-3d btn-3d-red" data-bs-dismiss="modal">
                             <i class="fas fa-times"></i> Close
                         </button>
                     </div>
@@ -259,7 +259,7 @@
             <div class="modal-content shadow-lg border-0 rounded-xl overflow-hidden">
                 <div class="modal-header text-white" style="background: linear-gradient(90deg, #06b6d4, #3b82f6);">
                     <h5 class="modal-title font-semibold">📄 Detail Final Account</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -297,7 +297,7 @@
                     </div>
                 </div>
                 <div class="modal-footer bg-gray-100 border-t">
-                    <button type="button" class="btn-3d btn-3d-red" data-dismiss="modal">
+                    <button type="button" class="btn-3d btn-3d-red" data-bs-dismiss="modal">
                         <i class="fas fa-times"></i> Close
                     </button>
                 </div>

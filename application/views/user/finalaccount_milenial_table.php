@@ -185,7 +185,7 @@
                 <?php endif; ?>
                 
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="#" class="btn btn-primary btn-3d mb-2 mr-2" data-toggle="modal" data-target="#newMilenialModal">
+                    <a href="#" class="btn btn-primary btn-3d mb-2 mr-2" data-bs-toggle="modal" data-bs-target="#newMilenialModal">
                         <i class="fas fa-plus mr-1"></i> Tambah Data
                     </a>
                 </div>
@@ -232,12 +232,12 @@
                                 <td>
                                     <div class="flex flex-col md:flex-row items-center justify-center space-y-1 md:space-y-0 md:space-x-1">
                                         <a href="#" class="btn-3d bg-teal-500 hover:bg-teal-600 text-white transition text-xs py-1 px-2 rounded-md btn-detail w-full md:w-auto"
-                                            data-toggle="modal" data-target="#milenialDetailModal" data-id="<?= $ma['id']; ?>">
+                                            data-bs-toggle="modal" data-bs-target="#milenialDetailModal" data-id="<?= $ma['id']; ?>">
                                             <i class="fas fa-eye mr-1"></i> Detail
                                         </a>
 
                                         <a href="#" class="btn-3d bg-indigo-500 hover:bg-indigo-600 text-white edit-btn transition text-xs py-1 px-2 rounded-md w-full md:w-auto"
-                                            data-toggle="modal" data-target="#editMilenialModal" data-id="<?= $ma['id']; ?>">
+                                            data-bs-toggle="modal" data-bs-target="#editMilenialModal" data-id="<?= $ma['id']; ?>">
                                             <i class="fas fa-pen mr-1"></i> Edit
                                         </a>
 
@@ -265,7 +265,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Edit Data Kontrak Milenial</h5>
-                        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close text-white" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <form id="editMilenialForm" method="post">
                         <div class="modal-body">
@@ -295,7 +295,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-3d" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-3d" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-3d">Save Changes</button>
                         </div>
                     </form>
@@ -309,7 +309,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Detail Kontrak Milenial</h5>
-                        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close text-white" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -358,7 +358,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-3d" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary btn-3d" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -370,7 +370,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Tambah Kontrak Milenial</h5>
-                        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close text-white" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <form id="addMilenialForm" method="post">
                         <div class="modal-body">
@@ -395,7 +395,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-3d" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-3d" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-3d">Tambah</button>
                         </div>
                     </form>
@@ -419,7 +419,7 @@
                     <h5 class="modal-title" id="fillCreatedByModalLabel">
                         <i class="fas fa-exclamation-triangle mr-2"></i> Isi Created By Data Lama
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -440,7 +440,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fas fa-times mr-1"></i> Batal
                     </button>
                     <button type="button" class="btn btn-danger" id="btnConfirmFill">

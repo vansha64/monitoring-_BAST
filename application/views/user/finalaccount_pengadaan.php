@@ -7,7 +7,7 @@
             <div class="col-lg ">
                 <?= $this->session->flashdata('message');  ?>
                 <div class="btn-group mb-3 " role="group">
-                    <a href="#" class="btn btn-primary mr-2" data-toggle="modal" data-target="#newFaModal">Tambah Data</a>
+                    <a href="#" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#newFaModal">Tambah Data</a>
                     <a href="<?= site_url('user/export') ?>" class="btn btn-primary mr-2">
                         <i class="fas fa-fw fa-file-download"></i> Export Excel
                     </a>
@@ -17,7 +17,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-file-excel"></i> Download File</a>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal-import-Fa">
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#Modal-import-Fa">
                                 <i class="fas fa-fw fa-file-import"></i> Upload File</a>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                         <td><?= $fa['pekerjaan']; ?></td>
                         <td><?= $fa['status']; ?></td>
                         <td>
-                            <a href="#" class="badge badge-warning btn-detail" data-toggle="modal" data-target="#finalAccountDetailModal" data-id="<?= $fa['id']; ?>">Detail</a>
-                            <a href="#" class="badge badge-success editBtn" data-toggle="modal" data-target="#editFaModal" data-id="<?= $fa['id']; ?>">Edit</a>
+                            <a href="#" class="badge badge-warning btn-detail" data-bs-toggle="modal" data-bs-target="#finalAccountDetailModal" data-id="<?= $fa['id']; ?>">Detail</a>
+                            <a href="#" class="badge badge-success editBtn" data-bs-toggle="modal" data-bs-target="#editFaModal" data-id="<?= $fa['id']; ?>">Edit</a>
                             <a href="#" class="badge badge-danger btn-delete" data-id="<?= $fa['id']; ?>">Delete</a>
                         </td>
                     </tr>
@@ -70,7 +70,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Import Data Final Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Import</button>
                 </div>
             </form>
@@ -104,7 +104,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="editFaModalLabel">Edit Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -133,7 +133,7 @@
                 </div>
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
@@ -150,7 +150,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="finalAccountDetailModalLabel">Final Account Detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -181,7 +181,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -196,7 +196,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="newFaModalLabel">Tambah Data Baru</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>

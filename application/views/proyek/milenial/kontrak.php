@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h4 class="mb-0"><i class="fas fa-file-contract mr-2 text-blue-500"></i>Kontrak Milenial</h4>
         <div>
-            <button class="btn btn-primary btn-3d" data-toggle="modal" data-target="#modalTambah">
+            <button class="btn btn-primary btn-3d" data-bs-toggle="modal" data-bs-target="#modalTambah">
                 <i class="fas fa-plus mr-1"></i> Tambah Data
             </button>
         </div>
@@ -73,7 +73,7 @@
         <form id="formTambah" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Kontrak</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group"><label>No Kontrak</label><input type="text" name="no_kontrak" class="form-control" required></div>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-dismiss="modal" type="button">Batal</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                 <button class="btn btn-primary" type="submit">Simpan</button>
             </div>
         </form>
@@ -100,7 +100,7 @@
         <form id="formEdit" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Edit Kontrak</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <input type="hidden" name="id" id="edit_id">
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-dismiss="modal" type="button">Batal</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                 <button class="btn btn-primary" type="submit">Update</button>
             </div>
         </form>
@@ -128,7 +128,7 @@
         <div class="modal-content p-3">
             <div class="modal-header">
                 <h5 class="modal-title">Detail Kontrak</h5>
-                <button class="close" data-dismiss="modal">&times;</button>
+                <button class="close" data-bs-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" id="detailContent">
                 <!-- isi dinamis -->

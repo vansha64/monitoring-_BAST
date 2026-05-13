@@ -136,12 +136,12 @@
                                     <td><?= date('d-m-Y H:i:s', $user['date_created']); ?></td>
                                     <td>
                                         <!-- Tombol Edit -->
-                                        <button type="button" class="btn btn-sm btn-primary edit-btn" data-toggle="modal" data-target="#editUserModal<?= $user['id']; ?>" data-id="<?= $user['id']; ?>" data-name="<?= $user['name']; ?>" data-email="<?= $user['email']; ?>" data-role-id="<?= $user['role_id']; ?>" data-date-created="<?= date('d-m-Y H:i:s', $user['date_created']); ?>">
+                                        <button type="button" class="btn btn-sm btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $user['id']; ?>" data-id="<?= $user['id']; ?>" data-name="<?= $user['name']; ?>" data-email="<?= $user['email']; ?>" data-role-id="<?= $user['role_id']; ?>" data-date-created="<?= date('d-m-Y H:i:s', $user['date_created']); ?>">
                                             Edit
                                         </button>
 
                                         <!-- Tombol Hapus -->
-                                        <button type="button" class="btn btn-sm btn-danger delete-btn" data-toggle="modal" data-target="#deleteUserModal<?= $user['id']; ?>">
+                                        <button type="button" class="btn btn-sm btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $user['id']; ?>">
                                             Hapus
                                         </button>
                                     </td>
@@ -160,7 +160,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="editUserModalLabel<?= $user['id']; ?>">Edit User</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -181,7 +181,7 @@
                                 <!-- Tambahan input lain sesuai kebutuhan -->
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
@@ -197,7 +197,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="deleteUserModalLabel<?= $user['id']; ?>">Hapus User</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -205,7 +205,7 @@
                             <p>Anda yakin ingin menghapus pengguna ini?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <a href="<?= base_url('admin/delete_user/' . $user['id']); ?>" class="btn btn-danger">Hapus</a>
                         </div>
                     </div>
