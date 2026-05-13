@@ -18,13 +18,14 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Salin semua file proyek
 COPY . /var/www/html/
 WORKDIR /var/www/html
 
 # Install dependencies via Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Pastikan folder database, logs, dan assets bisa diakses
 RUN mkdir -p application/database application/logs application/cache && \
