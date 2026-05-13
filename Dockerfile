@@ -25,7 +25,7 @@ COPY . /var/www/html/
 WORKDIR /var/www/html
 
 # Install dependencies via Composer
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --no-dev --optimize-autoloader
 
 # Pastikan folder database, logs, dan assets bisa diakses
 RUN mkdir -p application/database application/logs application/cache && \
