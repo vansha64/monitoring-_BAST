@@ -21,7 +21,11 @@ class Admin extends CI_Controller
         $this->load->model('Fa_model');
         $data['kontrak_summary'] = $this->Fa_model->get_kontrak_summary();
         $data['kontrak_stats'] = $this->Fa_model->get_kontrak_stats();
-        $data['summary_counts'] = $this->Fa_model->get_summary_counts();
+        $summary_counts = $this->Fa_model->get_summary_counts();
+        
+        // Add total_parsial count
+        $summary_counts['total_parsial'] = $this->db->count_all('user_parsial');
+        $data['summary_counts'] = $summary_counts;
 
         $this->load->model('Partial_model');
         $reminder_dates = $this->Partial_model->get_reminder_dates();

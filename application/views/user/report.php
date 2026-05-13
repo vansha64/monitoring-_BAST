@@ -1,216 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-
-    <!-- Bootstrap & Tailwind -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-
+<main id="main" class="main">
     <style>
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(90deg, #3b82f6, #06b6d4);
-        color: #1e293b;
-    }
-
     .main-container {
-        background-color: #ffffff;
+        background-color: #fff;
         padding: 2.5rem;
         border-radius: 1rem;
         box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
-        margin: 2rem auto;
-        max-width: 95%;
+        margin: 0 auto;
+        max-width: 100%;
         width: 100%;
     }
-
-    /* === RESPONSIVE TABLE (OPSI 3) === */
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* === TRUNCATE STYLE (OPSI 1) === */
-    .truncate-cell {
-        max-width: 200px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
-    }
-
-    /* Header gradient */
-    #reportTable thead {
-        background: linear-gradient(90deg, #3b82f6, #06b6d4);
-        color: #fff;
-    }
-
-    #reportTable th {
-        text-transform: uppercase;
-        font-weight: 600;
-        padding: 10px;
-    }
-
-    #reportTable td {
-        border: 1px solid #e2e8f0;
-        padding: 8px;
-        color: #1e293b;
-    }
-
-    #reportTable tbody tr:hover {
-        background-color: #e0f2fe;
-    }
-
-    .btn-success {
-        background-color: #16a34a;
-        border: none;
-    }
-
-    .btn-success:hover {
-        background-color: #15803d;
-    }
-
-    /* === OPTIMASI LEBAR TABEL DAN HEADER === */
-    #reportTable th,
-    #reportTable td {
-        padding: 0.35rem 0.5rem !important;
-        /* lebih kecil dari default */
-        font-size: 0.85rem !important;
-        /* sedikit lebih kecil */
-        vertical-align: middle !important;
-    }
-
-    /* Batasi tinggi baris agar tabel lebih rapat */
-    #reportTable tbody tr {
-        line-height: 1.2rem;
-    }
-
-    /* Batasi lebar kolom panjang, bungkus teks */
-    #reportTable td {
-        max-width: 160px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /* tampilkan "..." kalau teks panjang */
-    }
-
-    /* Saat hover, munculkan teks penuh */
-    #reportTable td:hover {
-        white-space: normal;
-        overflow: visible;
-        background-color: #e0f2fe !important;
-        z-index: 10;
-        position: relative;
-    }
-
-    /* Header table (rapat & jelas) */
-    #reportTable thead th {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* Supaya table responsif di layar kecil */
-    .table-responsive {
-        overflow-x: auto;
-        max-width: 100%;
-    }
+    #reportTable { width: 100% !important; }
+    #reportTable thead { background: linear-gradient(90deg, #6366f1, #8b5cf6) !important; color: white; }
+    #reportTable th { font-weight: 600; text-transform: uppercase; padding: 0.6rem; font-size: 0.75rem; vertical-align: middle; }
+    #reportTable td { padding: 0.5rem; font-size: 0.8rem; color: #1e293b; border: 1px solid #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+    #reportTable td:hover { white-space: normal; overflow: visible; background-color: #f5f3ff; position: relative; z-index: 10; cursor: help; }
+    #reportTable tbody tr:hover { background-color: #f5f3ff !important; }
+    
+    .btn-3d { position: relative; padding: 0.4rem 0.8rem; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; border-radius: 0.5rem; transition: all 0.2s ease; top: 0; color: #fff !important; display: inline-flex; align-items: center; justify-content: center; border: none; }
+    .btn-3d.btn-primary { background-color: #4f46e5; box-shadow: 0 3px 0 #3730a3; }
+    .btn-3d.btn-primary:hover { background-color: #4338ca; transform: translateY(-2px); box-shadow: 0 5px 0 #3730a3; }
+    .btn-3d.btn-success { background-color: #10b981; box-shadow: 0 3px 0 #047857; }
+    .btn-3d.btn-success:hover { background-color: #059669; transform: translateY(-2px); box-shadow: 0 5px 0 #047857; }
+    .btn-3d.btn-secondary { background-color: #6b7280; box-shadow: 0 3px 0 #374151; }
+    .btn-3d.btn-secondary:hover { background-color: #4b5563; transform: translateY(-2px); box-shadow: 0 5px 0 #374151; }
+    .btn-3d:active { top: 2px; transform: translateY(0); box-shadow: none !important; }
     </style>
-</head>
 
-<body>
     <div class="main-container mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 border-b border-gray-200 pb-3">
+            <i class="bi bi-file-earmark-bar-graph text-indigo-600 mr-3"></i> Laporan Monitoring
+            <span class="text-xl font-normal text-indigo-500">(Master Report)</span>
+        </h1>
 
-        <!-- Export Excel - BAST 1 & BAST 2 -->
-        <div class="mb-3 flex items-center gap-3 flex-wrap">
-            <input type="text" id="searchExport" placeholder="Cari data..." value="<?= $this->input->get('search') ?>"
-                class="border rounded-lg p-2 w-64">
-
-            <form method="GET" action="<?= base_url('User/export_report_bast1') ?>" class="d-inline" id="formBast1">
-                <input type="hidden" name="search" id="searchBast1" value="<?= $this->input->get('search') ?>">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-file-excel-o mr-1"></i> Export BAST 1
-                </button>
-            </form>
-
-            <form method="GET" action="<?= base_url('User/export_report_bast2') ?>" class="d-inline" id="formBast2">
-                <input type="hidden" name="search" id="searchBast2" value="<?= $this->input->get('search') ?>">
-                <button type="submit" class="btn btn-success">
-                    <i class="fa fa-file-excel-o mr-1"></i> Export BAST 2
-                </button>
-            </form>
-
-            <form method="GET" action="<?= base_url('User/export_report') ?>" class="d-inline" id="formAll">
-                <input type="hidden" name="search" id="searchAll" value="<?= $this->input->get('search') ?>">
-                <button type="submit" class="btn btn-secondary">
-                    <i class="fa fa-file-excel-o mr-1"></i> Export All
-                </button>
-            </form>
+        <!-- Export Controls -->
+        <div class="card mb-4 border-0 shadow-sm bg-light">
+            <div class="card-body p-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input type="text" id="searchExport" placeholder="Filter data..." value="<?= $this->input->get('search') ?>" class="form-control form-control-sm shadow-none border-gray-300" style="width: 250px;">
+                    </div>
+                    <div class="col-auto d-flex gap-2">
+                        <form method="GET" action="<?= base_url('User/export_report_bast1') ?>" id="formBast1">
+                            <input type="hidden" name="search" id="searchBast1" value="<?= $this->input->get('search') ?>">
+                            <button type="submit" class="btn btn-primary btn-3d">
+                                <i class="bi bi-file-earmark-excel me-1"></i> BAST 1
+                            </button>
+                        </form>
+                        <form method="GET" action="<?= base_url('User/export_report_bast2') ?>" id="formBast2">
+                            <input type="hidden" name="search" id="searchBast2" value="<?= $this->input->get('search') ?>">
+                            <button type="submit" class="btn btn-success btn-3d">
+                                <i class="bi bi-file-earmark-excel me-1"></i> BAST 2
+                            </button>
+                        </form>
+                        <form method="GET" action="<?= base_url('User/export_report') ?>" id="formAll">
+                            <input type="hidden" name="search" id="searchAll" value="<?= $this->input->get('search') ?>">
+                            <button type="submit" class="btn btn-secondary btn-3d">
+                                <i class="bi bi-grid me-1"></i> All Data
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <script>
-        // Update semua hidden input saat user mengetik di search box
-        document.getElementById('searchExport').addEventListener('input', function() {
-            const searchValue = this.value;
-            document.getElementById('searchBast1').value = searchValue;
-            document.getElementById('searchBast2').value = searchValue;
-            document.getElementById('searchAll').value = searchValue;
-        });
-        </script>
-
-        <div class="table-responsive">
-            <table id="reportTable" class="table table-striped table-bordered">
+        <div class="table-responsive shadow-sm rounded-lg">
+            <table id="reportTable" class="table table-hover align-middle mb-0">
                 <thead>
                     <tr>
                         <th>No Kontrak</th>
                         <th>Nama PT</th>
                         <th>Pekerjaan</th>
-                        <th>Tanggal Terima Asbuilt</th>
-                        <th>Tanggal Terima BAST</th>
+                        <th>Asbuilt</th>
+                        <th>BAST 1</th>
                         <th>Retensi</th>
-                        <th>Tanggal Final Account</th>
-                        <th>Tanggal Terima BAST 2</th>
-                        <th>Tanggal kirim POM</th>
-                        <th>Tanggal kembali POM</th>
-                        <th>Tanggal Kirim Kepusat</th>
-                        <th>Tanggal Kembali</th>
+                        <th>FA</th>
+                        <th>BAST 2</th>
+                        <th>Kirim POM</th>
+                        <th>Kembali POM</th>
+                        <th>Pusat</th>
+                        <th>Kontraktor</th>
                         <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($laporan as $row) : ?>
                     <tr>
-                        <td><?= $row['no_kontrak']; ?></td>
+                        <td class="fw-bold text-dark"><?= $row['no_kontrak']; ?></td>
                         <td><?= $row['nama_pt']; ?></td>
-
-                        <!-- truncate kolom panjang -->
-                        <td class="truncate-cell"
-                            onclick="showDetail('<?= htmlspecialchars($row['pekerjaan'], ENT_QUOTES); ?>')">
-                            <?= $row['pekerjaan']; ?>
-                        </td>
-
-                        <td><?= ($row['tgl_terima_asbuilt'] == '0000-00-00') ? '' : $row['tgl_terima_asbuilt']; ?></td>
-                        <td><?= $row['tgl_terima_bast']; ?></td>
-                        <td><?= $row['opsi_retensi'] . ' hari'; ?></td>
-                        <td><?= $row['tgl_closing']; ?></td>
-                        <td><?= ($row['tgl_terima_bast2'] == '0000-00-00') ? '' : $row['tgl_terima_bast2']; ?></td>
-                        <td><?= ($row['tgl_pom'] == '0000-00-00') ? '' : $row['tgl_pom']; ?></td>
-                        <td><?= ($row['kembali_pom'] == '0000-00-00') ? '' : $row['kembali_pom']; ?></td>
-                        <td><?= ($row['tgl_pusat2'] == '0000-00-00') ? '' : $row['tgl_pusat2']; ?></td>
-                        <td><?= ($row['tgl_kontraktor2'] == '0000-00-00') ? '' : $row['tgl_kontraktor2']; ?></td>
-
-                        <!-- truncate juga keterangan -->
-                        <td class="truncate-cell"
-                            onclick="showDetail('<?= htmlspecialchars($row['keterangan'], ENT_QUOTES); ?>')">
-                            <?= $row['keterangan']; ?>
-                        </td>
+                        <td title="<?= htmlspecialchars($row['pekerjaan']); ?>"><?= $row['pekerjaan']; ?></td>
+                        <td><?= ($row['tgl_terima_asbuilt'] == '0000-00-00') ? '-' : $row['tgl_terima_asbuilt']; ?></td>
+                        <td><?= ($row['tgl_terima_bast'] == '0000-00-00') ? '-' : $row['tgl_terima_bast']; ?></td>
+                        <td><span class="badge bg-light text-dark border"><?= $row['opsi_retensi']; ?> Hari</span></td>
+                        <td><?= ($row['tgl_closing'] == '0000-00-00') ? '-' : $row['tgl_closing']; ?></td>
+                        <td><?= ($row['tgl_terima_bast2'] == '0000-00-00') ? '-' : $row['tgl_terima_bast2']; ?></td>
+                        <td><?= ($row['tgl_pom'] == '0000-00-00') ? '-' : $row['tgl_pom']; ?></td>
+                        <td><?= ($row['kembali_pom'] == '0000-00-00') ? '-' : $row['kembali_pom']; ?></td>
+                        <td><?= ($row['tgl_pusat2'] == '0000-00-00') ? '-' : $row['tgl_pusat2']; ?></td>
+                        <td><?= ($row['tgl_kontraktor2'] == '0000-00-00') ? '-' : $row['tgl_kontraktor2']; ?></td>
+                        <td title="<?= htmlspecialchars($row['keterangan']); ?>"><?= $row['keterangan']; ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -218,67 +105,25 @@
         </div>
     </div>
 
-    <!-- === MODAL DETAIL === -->
-    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content border-0 shadow-lg rounded-lg">
-                <div class="modal-header bg-blue-600 text-white rounded-t-lg">
-                    <h5 class="modal-title font-semibold" id="detailModalLabel">Detail Informasi</h5>
-                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="text-2xl">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body p-4">
-                    <p id="modalContent" class="text-gray-800"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary px-4 py-2 rounded-md"
-                        id="closeModalBtn">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
     <script>
     $(document).ready(function() {
-        // DataTables
         $('#reportTable').DataTable({
-            "destroy": true,
             "order": [],
+            "pageLength": 25,
             "language": {
-                "search": "Cari:",
-                "lengthMenu": "Tampilkan _MENU_ data per halaman",
-                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
-                "infoEmpty": "Data tidak tersedia",
-                "infoFiltered": "(disaring dari _MAX_ total data)",
-                "zeroRecords": "Data tidak ditemukan",
+                "search": "Filter Table:",
                 "paginate": {
-                    "first": "Pertama",
-                    "last": "Terakhir",
-                    "next": "Selanjutnya",
-                    "previous": "Sebelumnya"
+                    "next": "<i class='bi bi-chevron-right'></i>",
+                    "previous": "<i class='bi bi-chevron-left'></i>"
                 }
             }
         });
 
-        // Tampilkan modal detail
-        window.showDetail = function(text) {
-            $('#modalContent').text(text);
-            $('#detailModal').modal('show');
-        };
-
-        // Tutup modal (perbaikan)
-        $('#closeModalBtn').click(function() {
-            $('#detailModal').modal('hide');
+        $('#searchExport').on('input', function() {
+            const val = $(this).val();
+            $('#searchBast1, #searchBast2, #searchAll').val(val);
         });
     });
     </script>
-
-</body>
-
-</html>
+</main>

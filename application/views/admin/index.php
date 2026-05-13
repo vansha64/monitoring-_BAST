@@ -1,102 +1,175 @@
 <main id="main" class="main">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    <style>
+    .dashboard-card {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+    }
+    .card-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .bg-soft-blue { background: #e0f2fe; color: #0369a1; }
+    .bg-soft-green { background: #dcfce7; color: #15803d; }
+    .bg-soft-purple { background: #f3e8ff; color: #7e22ce; }
+    .bg-soft-orange { background: #ffedd5; color: #c2410c; }
+    .bg-soft-red { background: #fee2e2; color: #b91c1c; }
+    
+    .card-title-text { font-size: 0.875rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.025em; margin-bottom: 0.25rem; }
+    .card-value { font-size: 1.875rem; font-weight: 700; color: #1e293b; margin: 0; }
+    
+    .main-container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-top: 1.5rem;
+    }
+    </style>
 
+    <div class="pagetitle mb-4">
+        <h1 class="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
+        <nav>
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
 
-        /* Background gradient */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(90deg, #3b82f6, #06b6d4);
-            /* biru → cyan */
-            color: #1e293b;
-            /* slate-800 (teks utama) */
+    <div class="row g-4">
+        <!-- Total Kontrak -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-blue">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <h6 class="card-title-text">Total Kontrak</h6>
+                <p class="card-value"><?= $kontrak_stats['total_kontrak']; ?></p>
+            </div>
+        </div>
+
+        <!-- Total Perusahaan -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-green">
+                    <i class="bi bi-building"></i>
+                </div>
+                <h6 class="card-title-text">Perusahaan</h6>
+                <p class="card-value"><?= $kontrak_stats['total_perusahaan']; ?></p>
+            </div>
+        </div>
+
+        <!-- BAST 1 -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-purple">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+                <h6 class="card-title-text">BAST 1</h6>
+                <p class="card-value"><?= $summary_counts['total_bast1']; ?></p>
+            </div>
+        </div>
+
+        <!-- BAST 2 -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-orange">
+                    <i class="bi bi-check-all"></i>
+                </div>
+                <h6 class="card-title-text">BAST 2</h6>
+                <p class="card-value"><?= $summary_counts['total_bast2']; ?></p>
+            </div>
+        </div>
+
+        <!-- Pemasangan/Partial -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-blue">
+                    <i class="bi bi-tools"></i>
+                </div>
+                <h6 class="card-title-text">Pemasangan</h6>
+                <p class="card-value"><?= $summary_counts['total_parsial'] ?? 0; ?></p>
+            </div>
+        </div>
+
+        <!-- Final Account -->
+        <div class="col-xl-3 col-md-6">
+            <div class="dashboard-card">
+                <div class="card-icon bg-soft-red">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+                <h6 class="card-title-text">Final Account</h6>
+                <p class="card-value"><?= $summary_counts['total_final_account']; ?></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="card-title m-0 fw-bold"><i class="bi bi-graph-up me-2"></i>Statistik Kontrak per Perusahaan</h5>
+        </div>
+        <div style="height: 400px; position: relative;">
+            <canvas id="kontrakChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const ctx = document.getElementById('kontrakChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: <?= json_encode(array_column($kontrak_summary, 'nama_pt')); ?>,
+                    datasets: [{
+                        label: 'Jumlah Kontrak',
+                        data: <?= json_encode(array_column($kontrak_summary, 'jumlah_kontrak')); ?>,
+                        backgroundColor: 'rgba(79, 70, 229, 0.6)',
+                        borderColor: 'rgb(79, 70, 229)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
         }
-
-        /* Container utama */
-        .main-container {
-            background-color: #ffffff;
-            /* putih bersih */
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
-            margin: 2rem auto;
-            max-width: 95%;
-            width: 100%;
-            color: #1e293b;
-        }
-
-        /* DataTables Controls */
-        .dataTables_wrapper .dataTables_length,
-        .dataTables_wrapper .dataTables_filter,
-        .dataTables_wrapper .dataTables_info,
-        .dataTables_wrapper .dataTables_processing,
-        .dataTables_wrapper .dataTables_paginate {
-            color: #1e293b !important;
-            /* teks gelap */
-        }
-
-        /* Input search & dropdown */
-        .dataTables_wrapper .dataTables_filter input,
-        .dataTables_wrapper .dataTables_length select {
-            background-color: #f1f5f9 !important;
-            /* slate-100 */
-            border: 1px solid #cbd5e1 !important;
-            /* slate-300 */
-            color: #1e293b !important;
-            /* teks gelap */
-            border-radius: 0.5rem;
-            padding: 0.5rem;
-            margin: 0 0.5rem;
-        }
-
-        /* Pagination */
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            background-color: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-            color: #2563eb !important;
-            /* biru utama */
-            border-radius: 0.5rem !important;
-            margin: 0 0.25rem !important;
-            padding: 0.5rem 0.75rem !important;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.disabled) {
-            background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
-            border-color: #3b82f6 !important;
-            color: #ffffff !important;
-            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-            color: #94a3b8 !important;
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* ===== TABEL ===== */
-
-        /* Header tabel (gradient lembut biru → cyan) */
-        #data-tabel thead {
-            display: table-header-group !important;
-            background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
-            color: #ffffff !important;
-        }
-
-        #data-tabel thead th {
-            font-weight: 600;
-            text-transform: uppercase;
-            padding: 0.75rem;
-            border-bottom: 2px solid #0ea5e9;
-        }
-
-        /* Isi tabel */
-        #data-tabel tbody tr {
-            background-color: #f8fafc;
-            /* putih keabu-abuan */
-        }
+    });
+    </script>
+</main>
 
         #data-tabel tbody tr:hover {
             background-color: #e0f2fe !important;

@@ -182,6 +182,8 @@ try {
         (1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
         (2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
         (2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
+        (2, 'Pemasangan', 'user/partial', 'fas fa-fw fa-tools', 1),
+        (2, 'Report', 'user/laporan', 'fas fa-fw fa-file-alt', 1),
         (3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
         (3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1)");
 
