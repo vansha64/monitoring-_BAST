@@ -12,10 +12,7 @@
 	},
 
 	"require": {
-		"phpoffice/phpexcel": "^1.7.9",
-		"phpoffice/phpspreadsheet": "*"
-	}
-	,
+	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},

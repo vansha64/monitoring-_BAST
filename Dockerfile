@@ -7,11 +7,14 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libsqlite3-dev \
     libzip-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
     zip \
     unzip \
     sqlite3 \
     git && \
-    docker-php-ext-install mysqli mbstring pdo pdo_sqlite zip
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install mysqli mbstring pdo pdo_sqlite zip gd
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
