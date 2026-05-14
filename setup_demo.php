@@ -49,67 +49,21 @@ try {
             no_kontrak TEXT,
             tgl_terima TEXT,
             status TEXT,
-            keterangan TEXT
-        )",
-        "CREATE TABLE IF NOT EXISTS user_bast (
-            id_bast INTEGER PRIMARY KEY AUTOINCREMENT,
-            id_asbuilt INTEGER,
             keterangan TEXT,
-            tgl_terima_bast TEXT,
-            tgl_pusat TEXT,
-            tgl_kontraktor TEXT,
-            file_pdf TEXT,
-            opsi_retensi TEXT,
-            is_revisi INTEGER,
-            created_by TEXT,
             updated_by TEXT
         )",
-        "CREATE TABLE IF NOT EXISTS user_bast1 (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            no_kontrak TEXT,
-            nama_pt TEXT,
-            pekerjaan TEXT,
-            tgl_terima_bast TEXT,
-            file_pdf TEXT
-        )",
         "CREATE TABLE IF NOT EXISTS user_closing (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_closing INTEGER PRIMARY KEY AUTOINCREMENT,
             no_kontrak TEXT,
             nama_pt TEXT,
             pekerjaan TEXT,
             tgl_terima_bast TEXT,
-            file_pdf TEXT
-        )",
-        "CREATE TABLE IF NOT EXISTS opsi_retensi (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nama TEXT
-        )",
-        "CREATE TABLE IF NOT EXISTS user_barangmasuk (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nama_barang TEXT,
-            jumlah INTEGER,
-            tgl_masuk TEXT,
-            keterangan TEXT
-        )",
-        "CREATE TABLE IF NOT EXISTS user_barangkeluar (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nama_barang TEXT,
-            jumlah INTEGER,
-            tgl_keluar TEXT,
-            keterangan TEXT
-        )",
-        "CREATE TABLE IF NOT EXISTS user_parkir (
-            id_parkir INTEGER PRIMARY KEY AUTOINCREMENT,
-            perusahaan TEXT,
-            nama_member TEXT,
-            no_kendaraan TEXT,
-            no_kartu TEXT,
-            jenis_kendaraan TEXT,
-            tgl_pembuatan TEXT,
-            tgl_berakhir TEXT,
-            keterangan TEXT,
-            scan_dokumen TEXT,
-            status TEXT
+            file_pdf TEXT,
+            tgl_closing TEXT,
+            scan_fa TEXT,
+            keterangan_fa TEXT,
+            updated_by TEXT,
+            is_active INTEGER
         )",
         "CREATE TABLE IF NOT EXISTS user_parsial (
             id_parsial INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -122,7 +76,8 @@ try {
             tgl_kembali_pom TEXT,
             tgl_kembali_kontraktor TEXT,
             keterangan TEXT,
-            scan_pdf TEXT
+            scan_pdf TEXT,
+            status_revisi INTEGER
         )",
         "CREATE TABLE IF NOT EXISTS ci_sessions (
             id varchar(128) NOT NULL,
@@ -151,7 +106,8 @@ try {
             no_kontrak TEXT,
             tgl_terima TEXT,
             status TEXT,
-            keterangan TEXT
+            keterangan TEXT,
+            updated_by TEXT
         )",
         "CREATE TABLE IF NOT EXISTS user_final_account_milenial (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -175,15 +131,18 @@ try {
     $db->exec("INSERT OR IGNORE INTO user (id, name, email, image, password, role_id, is_active, date_created) 
                VALUES (1, 'Demo Admin', 'admin@demo.com', 'default.jpg', '$password', 1, 1, " . time() . ")");
 
-    $db->exec("INSERT OR IGNORE INTO user_menu (id, menu) VALUES (1, 'Admin'), (2, 'User'), (3, 'Menu')");
-    $db->exec("INSERT OR IGNORE INTO user_access_menu (role_id, menu_id) VALUES (1, 1), (1, 2), (1, 3), (2, 2)");
+    $db->exec("INSERT OR IGNORE INTO user_menu (id, menu) VALUES (1, 'Admin'), (2, 'User'), (3, 'Menu'), (4, 'Pemasangan')");
+    $db->exec("INSERT OR IGNORE INTO user_access_menu (role_id, menu_id) VALUES (1, 1), (1, 2), (1, 3), (1, 4), (2, 2)");
 
     $db->exec("INSERT OR IGNORE INTO user_sub_menu (menu_id, title, url, icon, is_active) VALUES 
         (1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
         (2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
         (2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-        (2, 'Pemasangan', 'user/partial', 'fas fa-fw fa-tools', 1),
         (2, 'Report', 'user/laporan', 'fas fa-fw fa-file-alt', 1),
+        (4, 'Data Pemasangan', 'user/partial', 'fas fa-fw fa-tools', 1),
+        (4, 'Barang Masuk', 'user/barangmasuk', 'fas fa-fw fa-truck-loading', 1),
+        (4, 'Barang Keluar', 'user/barangkeluar', 'fas fa-fw fa-truck', 1),
+        (4, 'Parkir', 'user/parkir', 'fas fa-fw fa-parking', 1),
         (3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
         (3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1)");
 
