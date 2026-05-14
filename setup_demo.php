@@ -52,6 +52,28 @@ try {
             keterangan TEXT,
             updated_by TEXT
         )",
+        "CREATE TABLE IF NOT EXISTS user_bast (
+            id_bast INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_asbuilt INTEGER,
+            no_kontrak TEXT,
+            keterangan TEXT,
+            tgl_terima_bast TEXT,
+            tgl_pusat TEXT,
+            tgl_kontraktor TEXT,
+            file_pdf TEXT,
+            opsi_retensi TEXT,
+            is_revisi INTEGER,
+            created_by TEXT,
+            updated_by TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_bast1 (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            no_kontrak TEXT,
+            nama_pt TEXT,
+            pekerjaan TEXT,
+            tgl_terima_bast TEXT,
+            file_pdf TEXT
+        )",
         "CREATE TABLE IF NOT EXISTS user_closing (
             id_closing INTEGER PRIMARY KEY AUTOINCREMENT,
             no_kontrak TEXT,
@@ -64,6 +86,37 @@ try {
             keterangan_fa TEXT,
             updated_by TEXT,
             is_active INTEGER
+        )",
+        "CREATE TABLE IF NOT EXISTS opsi_retensi (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nama TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_barangmasuk (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nama_barang TEXT,
+            jumlah INTEGER,
+            tgl_masuk TEXT,
+            keterangan TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_barangkeluar (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nama_barang TEXT,
+            jumlah INTEGER,
+            tgl_keluar TEXT,
+            keterangan TEXT
+        )",
+        "CREATE TABLE IF NOT EXISTS user_parkir (
+            id_parkir INTEGER PRIMARY KEY AUTOINCREMENT,
+            perusahaan TEXT,
+            nama_member TEXT,
+            no_kendaraan TEXT,
+            no_kartu TEXT,
+            jenis_kendaraan TEXT,
+            tgl_pembuatan TEXT,
+            tgl_berakhir TEXT,
+            keterangan TEXT,
+            scan_dokumen TEXT,
+            status TEXT
         )",
         "CREATE TABLE IF NOT EXISTS user_parsial (
             id_parsial INTEGER PRIMARY KEY AUTOINCREMENT,
