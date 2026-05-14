@@ -139,10 +139,12 @@ try {
         (2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
         (2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
         (2, 'Report', 'user/laporan', 'fas fa-fw fa-file-alt', 1),
+        (4, 'Kontrak', 'user/finalaccount', 'fas fa-fw fa-file-contract', 1),
+        (4, 'Asbuiltdrawing', 'user/asbuiltdrawing', 'fas fa-fw fa-drafting-compass', 1),
+        (4, 'BAST 1', 'user/getBAST', 'fas fa-fw fa-certificate', 1),
+        (4, 'BAST 2', 'user/getBAST2', 'fas fa-fw fa-award', 1),
+        (4, 'Final Account', 'user/closing', 'fas fa-fw fa-file-invoice-dollar', 1),
         (4, 'Data Pemasangan', 'user/partial', 'fas fa-fw fa-tools', 1),
-        (4, 'Barang Masuk', 'user/barangmasuk', 'fas fa-fw fa-truck-loading', 1),
-        (4, 'Barang Keluar', 'user/barangkeluar', 'fas fa-fw fa-truck', 1),
-        (4, 'Parkir', 'user/parkir', 'fas fa-fw fa-parking', 1),
         (3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
         (3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1)");
 
